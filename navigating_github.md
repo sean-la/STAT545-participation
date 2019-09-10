@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Helpful links
 
 Here is the URL to the __STAT 545 homepage__ repo:
