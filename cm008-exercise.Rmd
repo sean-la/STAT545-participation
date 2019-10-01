@@ -34,8 +34,9 @@ knitr::opts_chunk$set(error = TRUE, warning = FALSE)
 After fixing the error, fix the overlapping problem in the following plot (attribution: ["R for data science"](https://r4ds.had.co.nz/data-visualisation.html)).
 
 ```{r, fig.width = 5, fig.height = 2}
-ggplot(mpg, aes(cty, hwy)) %>% 
-  geom_point()
+ggplot(mpg, aes(cty, hwy)) + 
+  geom_jitter(alpha=0.5, size = 1) +
+  geom_smooth(method = "lm")
 ```
 
 
@@ -45,9 +46,9 @@ Fix this plot so that it shows life expectancy over time _for each country_. Not
 
 ```{r, fig.width = 5, fig.height = 2}
 gapminder %>% 
-  group_by(country) %>% 
-  ggplot(aes(year, lifeExp)) +
-  geom_line()
+  ggplot(aes(year, lifeExp, group = country, colour = country == 'Rwanda')) +
+  geom_line(alpha=1/3) +
+  scale_colour_discrete("", labels = c("Other","Rwanda"))
 ```
 
 
@@ -61,7 +62,8 @@ gapminder %>%
 ```{r, fig.width = 5, fig.height = 2}
 ggplot(gapminder, aes(gdpPercap, lifeExp)) +
   geom_point(alpha = 0.2) +
-  scale_x_log10()
+  scale_x_log10(labels = scales::comma_format()) +
+  facet_wrap(~ continent)
 ```
 
 ### 3(b) Bubble Plot
@@ -71,13 +73,14 @@ ggplot(gapminder, aes(gdpPercap, lifeExp)) +
   - Try adding a `scale_size_area()` layer too (could also try `scale_radius()`).
 - Use `shape=21` to distinguish between `fill` (interior) and `colour` (exterior). 
 
-```{r, fig.width = 5, fig.height = 2}
+```{r, fig.width = 8, fig.height = 2}
 gapminder %>% 
   filter(continent != "Oceania") %>% 
-  ggplot(aes(gdpPercap, lifeExp)) +
-  facet_wrap(~ continent) +
-  geom_point(alpha = 0.2) +
-  scale_x_log10(labels = scales::comma_format())
+  ggplot(aes(gdpPercap, lifeExp, size = pop, fill = continent)) +
+  facet_wrap(~ continent, nrow=1) +
+  geom_point(alpha = 0.2, shape = 21) +
+  scale_x_log10(labels = scales::comma_format()) +
+  scale_size_area()
 ```
 
 A list of shapes can be found [at the bottom of the `scale_shape` documentation](https://ggplot2.tidyverse.org/reference/scale_shape.html).
