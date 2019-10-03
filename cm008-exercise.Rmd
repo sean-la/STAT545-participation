@@ -126,9 +126,8 @@ Fix the plot so that you can actually see the data points. Be sure to solve the 
 ```{r, fig.width = 5, fig.height = 2}
 gapminder %>% 
   filter(continent == "Americas") %>% 
-  ggplot(aes(country, lifeExp)) + 
-  geom_point() +
-  geom_boxplot()
+  ggplot(aes(lifeExp, country)) + 
+  geom_density_ridges()
 ```
 
 ### 5(b) Ridgeplots
@@ -192,7 +191,6 @@ ggplot(hair_eye, aes(Hair, Eye)) +
 ```
 
 By the way, `geom_count()` is like `geom_bar()`: it counts the number of overlapping points.
-
 
 ## Additional take-home practice
 
