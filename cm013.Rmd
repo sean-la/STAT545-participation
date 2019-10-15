@@ -28,9 +28,9 @@ Note, there will be very little coding in-class today, but I've given you plenty
 
 Write some notes here about what "effective visualizations" means to you. Think of elements of good graphics and plots that you have seen - what makes them good or bad? Write 3-5 points.
 
-1. 
-1. 
-1. 
+1. Colors to emphasize different aspects of the data
+1. Different sizes and shapes of data to emphasize different aspects
+1. Uncluttered - not too much and not too little happening in graph
 1. 
 1.
 
@@ -40,9 +40,13 @@ Write some notes here about what "effective visualizations" means to you. Think 
 >
 > Very strong, strong, weak, very week, do not know
 
-- <<Your answer here (and make sure to explain why you chose this answer)>>
+- weak; German workers certainly do work more hours than other EU nations, but there is no indication from the graph that German workers are more motivated on the job.
+The only metric that is presented in the graph is weekly hours of work.
+Also, the difference between the hours worked by German workers is not that much larger than the other countries.
+It would be good to see error bars on the estimates.
 
 - Main takeaway: Summarize the main takeaway from this question/discussion here
+Scale of the x-axis is important too.
 
 ### CQ02: Average Global Temperature by year
 
@@ -50,9 +54,11 @@ Write some notes here about what "effective visualizations" means to you. Think 
 > 
 > Yes, No, Do not know
 
-- <<Your answer here (and make sure to explain why you chose this answer)>>
+Do not know; judging from the graph, it is hard to say whether there is an appreciable increase in temperature.
 
 - Main takeaway: Summarize the main takeaway from this question/discussion here
+Farenheit is not a fairly non-interpretable scale, and the y-axis is on a huge range.
+Scale is on the y-axis is important.
 
 ### CQ03: Gun deaths in Florida
 
@@ -60,9 +66,10 @@ Write some notes here about what "effective visualizations" means to you. Think 
 >
 > Very strong, strong, weak, very week, do not know
 
-- <<Your answer here (and make sure to explain why you chose this answer)>>
+- Very week: the number of deaths actually increased if you look closely!
 
 - Main takeaway: Summarize the main takeaway from this question/discussion here
+Be skeptical of all graphs, observe closely!
 
 ## Part 2: Extracting insight from visualizations  [20 mins]
 
