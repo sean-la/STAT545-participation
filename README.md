@@ -8,9 +8,9 @@ Here is a table which directs you to my various participation files, for those t
 
 | Class Meeting | Knitted HTML |
 | ------------- | ------------ |
-| 3             | [Navigating github](https://realseanla.github.io/STAT545-participation/cm003/navigating_github.html)] |
-|               | [Rmarkdown exploration](https://realseanla.github.io/STAT545-participation/cm003/rmd_exploration.html)] |
-|               | [Rmarkdown exploration slides](https://realseanla.github.io/STAT545-participation/cm003/rmd_exploration_slides.html]|
+| 3             | [Navigating github](https://realseanla.github.io/STAT545-participation/cm003/navigating_github.html) |
+|               | [Rmarkdown exploration](https://realseanla.github.io/STAT545-participation/cm003/rmd_exploration.html) |
+|               | [Rmarkdown exploration slides](https://realseanla.github.io/STAT545-participation/cm003/rmd_exploration_slides.html)|
 | 5             | [cm005](https://realseanla.github.io/STAT545-participation/cm005/cm005-exercise.html) |
 | 6             | [cm006](https://realseanla.github.io/STAT545-participation/cm006/cm006-exercise.html) |
 | 7             | [cm007](https://realseanla.github.io/STAT545-participation/cm007/cm007-exercise.html) |
