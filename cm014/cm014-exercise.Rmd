@@ -1,9 +1,11 @@
 ---
 title: "cm014 Worksheet: The Model-Fitting Paradigm in R"
-output: html_notebook
-editor_options: 
-  chunk_output_type: inline
+output: github_document
 ---
+
+```{r allow errors, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE, warning = FALSE)
+```
 
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
@@ -125,7 +127,7 @@ predict(my_lm, newdata = gapminder_France2) %>%
 ```
 Or we can predict on a new dataset:
 ```{r}
-years1 = FILL_THIS_IN
+years1 = data.frame(year = seq(1990, 2018))
 predict(my_lm,years1)
 
 ```
