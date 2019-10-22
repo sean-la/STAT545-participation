@@ -21,7 +21,7 @@ which(times < 30)
 sum(times < 30)
 (i <- which(times < 30))
 
-# Subsetting
+# Subsetting vectorss
 times[3]
 times[-3]
 times[c(2,4)]

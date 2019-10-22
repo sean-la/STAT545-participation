@@ -1,9 +1,7 @@
 ---
 title: "cm008 Exercises: Fix the Plots"
 output: 
-  html_document:
-    keep_md: true
-    theme: paper
+  github_document
 ---
 
 In this worksheet, we'll be looking at some erroneous plots and fixing them. 
@@ -82,7 +80,18 @@ gapminder %>%
   scale_x_log10(labels = scales::comma_format()) +
   scale_size_area()
 ```
+COMMENT: lets try playing around with the shape and alpha parameters in `geom_point`.
 
+```{r, fig.width = 8, fig.height = 2}
+gapminder %>% 
+  filter(continent != "Oceania") %>% 
+  ggplot(aes(gdpPercap, lifeExp, size = pop, fill = continent)) +
+  facet_wrap(~ continent, nrow=1) +
+  geom_point(alpha = 0.05, shape = 30) +
+  scale_x_log10(labels = scales::comma_format()) +
+  scale_size_area()
+```
+This gives an error that pch value `30` is not implemented. The variable must be categorical, not some quantitative.
 A list of shapes can be found [at the bottom of the `scale_shape` documentation](https://ggplot2.tidyverse.org/reference/scale_shape.html).
 
 ### 3(c) Size "not working"
@@ -91,11 +100,18 @@ Instead of alpha transparency, suppose you're wanting to fix the overplotting is
 
 ```{r, fig.width = 5, fig.height = 2}
 ggplot(gapminder) +
-  geom_point(aes(gdpPercap, lifeExp, size = 0.1)) +
+  geom_point(aes(gdpPercap, lifeExp, size = 0.12)) +
   scale_x_log10(labels = scales::dollar_format())
 ```
+The problem is that `size` is interpretted as some category.
+Let's try to put `size` outside of `aes`.
 
-
+```{r, fig.width = 5, fig.height = 2}
+ggplot(gapminder) +
+  geom_point(aes(gdpPercap, lifeExp), size = 0.12) +
+  scale_x_log10(labels = scales::dollar_format())
+```
+Better!
 
 ## Exercise 4: Walking caribou
 
@@ -153,10 +169,14 @@ gapminder %>%
 
 ```{r, fig.width = 5, fig.height = 2}
 mtcars %>% 
-  mutate(transmission = if_else(am == 0, "automatic", "manual")) %>% 
+  mutate(transmission = if_else(am == 0, "automatic", "manual")) %>%
+  group_by(transmission) %>% 
+  summarize(count=n()) %>% 
+  mutate(percent=count/sum(count)) %>% 
   ggplot(aes(cyl)) +
-  geom_bar(aes(colour = transmission))
+    geom_bar(aes(colour = transmission))
 ```
+I tried to fix it but it didn't work :( 
 
 ### 6(b) Bar heights already calculated
 
@@ -171,7 +191,9 @@ Fix the following bar plot so that it shows these counts.
 
 ```{r}
 ggplot(hair, aes(Hair, n)) +
-  geom_bar()
+  geom_col() +
+  ylab("count") +
+  ggtitle("hair color counts")
 ```
 
 ## Exercise 7: Tiling
@@ -187,7 +209,8 @@ Fix the following plot so that it shows a filled-in square for each combination.
 
 ```{r}
 ggplot(hair_eye, aes(Hair, Eye)) +
-  geom_point(aes(colour = n))
+  geom_tile(aes(fill = n)) +
+  ggtitle("Eye colours and hair colour visual contigency table")
 ```
 
 By the way, `geom_count()` is like `geom_bar()`: it counts the number of overlapping points.

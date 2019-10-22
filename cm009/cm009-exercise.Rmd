@@ -1,7 +1,11 @@
 ---
-title: "cm009 Exercises: tidy data"
-output: html_notebook
-editor_options: 
+title: 'cm009 Exercises: tidy data'
+output:
+  html_document:
+    df_print: paged
+  html_notebook: default
+  pdf_document: default
+editor_options:
   chunk_output_type: inline
 ---
 
@@ -129,10 +133,10 @@ tibble(label = "Sample A",
 n <- 100
 mu <- c(-5, 0, 5)
 sd <- c(1, 3, 10)
-FILL_THIS_IN(mu = mu, sd = sd) %>% 
+tibble(mu = mu, sd = sd) %>% 
   group_by_all() %>% 
   mutate(z = list(rnorm(n, mu, sd))) %>% 
-  FILL_THIS_IN
+  unnest(z)
 ```
 
 3. Fix the `experiment` tibble below (originally defined in the documentation of the `tidyr::expand()` function) so that all three repeats are displayed for each person, and the measurements are kept. The code is given, but needs one adjustment. What is it?

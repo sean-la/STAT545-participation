@@ -1,9 +1,7 @@
 ---
 title: "cm007 Exercises: Practice with `dplyr`"
 output: 
-  html_document:
-    keep_md: true
-    theme: paper
+  html_document
 ---
 
 <!---The following chunk allows errors when knitting--->
@@ -79,6 +77,5 @@ gapminder %>%
   arrange(inc_life_exp) %>% 
   knitr::kable()
 ```
-
 
 

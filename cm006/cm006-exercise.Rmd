@@ -1,14 +1,7 @@
 ---
 title: 'cm006: `dplyr` Exercise'
 output: 
-  html_document:
-    toc: true
-    theme: united
-  md_document:
-    toc: true
-    highlight: zenburn
-editor_options: 
-  chunk_output_type: inline
+  github_document
 ---
 <!---The following chunk allows errors when knitting--->
 
@@ -139,6 +132,11 @@ gapminder %>%
   filter(continent == 'Asia',
          pop > 100000000)
 ```
+COMMENT: this also works
+```{r}
+gapminder %>% 
+  filter(continent == 'Asia' & pop > 100000000)
+```
 
 3. Repeat 2, but take data from countries Brazil, and China. 
 
@@ -194,6 +192,14 @@ Knit, commit, push!
 If there's time remaining, we'll practice with these three exercises. I'll give you 1 minute for each, then we'll go over the answer.
 
 1. Take all countries in Europe that have a GDP per capita greater than 10000, and select all variables except `gdpPercap`. (Hint: use `-`).
+
+```{r}
+gapminder %>% 
+  filter(continent == 'Europe',
+         gdpPercap > 10000) %>% 
+  select(-gdpPercap)
+  
+```
 
 2. Take the first three columns, and extract the names.
 
