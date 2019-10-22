@@ -1,7 +1,7 @@
 ---
 title: 'cm006: `dplyr` Exercise'
-output: 
-  github_document
+output:
+  html_document
 ---
 <!---The following chunk allows errors when knitting--->
 

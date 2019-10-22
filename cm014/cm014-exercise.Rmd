@@ -1,6 +1,6 @@
 ---
 title: "cm014 Worksheet: The Model-Fitting Paradigm in R"
-output: github_document
+output: html_document
 ---
 
 ```{r allow errors, echo = FALSE}

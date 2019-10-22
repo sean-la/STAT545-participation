@@ -1,7 +1,7 @@
 ---
 title: "cm005 Worksheet: Exploring Geometric Objects"
-output: 
-  github_document
+output:
+  html_document
 ---
 
 ## Preliminary
