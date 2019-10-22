@@ -477,6 +477,7 @@ devtools::install_github(&quot;JoeyBernhardt/singer&quot;)</code></pre>
 ## 11 It Was So Easy  (LP Ver… Carly Simon    1972 New York,… No Secrets      
 ## 12 I've Got A Crush On You  Carly Simon    1994 New York,… Clouds In My Co…
 ## 13 &quot;Manha De Carnaval (The… Carly Simon    2007 New York,… Into White</code></pre>
+<p>Some examples of songs where we know its corresponding album include grievance, stupidmop (funny name), present tense, and sparrow.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Go ahead and add the corresponding albums to the <code>time</code> tibble, being sure to preserve rows even if album info is not readily available.</li>
 </ol>
@@ -496,6 +497,7 @@ devtools::install_github(&quot;JoeyBernhardt/singer&quot;)</code></pre>
 ##  9 Martin_ Doom! It's… The Boo Radle…  1995 &lt;NA&gt;        &lt;NA&gt;               
 ## 10 Leaves And Sand     The Boo Radle…  1993 &lt;NA&gt;        &lt;NA&gt;               
 ## # … with 12 more rows</code></pre>
+<p>corduroy doesnt have album info!!!!!!!</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Which songs do we have “year”, but not album info?</li>
 </ol>
@@ -513,6 +515,7 @@ devtools::install_github(&quot;JoeyBernhardt/singer&quot;)</code></pre>
 ## 7 Babydoll                         Mariah Carey     1997
 ## 8 Don't Forget About Us            Mariah Carey     2005
 ## 9 Vision Of Love                   Mariah Carey     1990</code></pre>
+<p>leaves and sand doesn’t have album info either :(</p>
 <ol start="4" style="list-style-type: decimal">
 <li>Which artists are in <code>time</code>, but not in <code>album</code>?</li>
 </ol>
@@ -526,6 +529,7 @@ devtools::install_github(&quot;JoeyBernhardt/singer&quot;)</code></pre>
 ## 3 Babydoll              Mariah Carey  1997
 ## 4 Don't Forget About Us Mariah Carey  2005
 ## 5 Vision Of Love        Mariah Carey  1990</code></pre>
+<p>These ones don’t have time info either. Semi join is a magnificent function</p>
 <ol start="5" style="list-style-type: decimal">
 <li>You’ve come across these two tibbles, and just wish all the info was available in one tibble. What would you do?</li>
 </ol>
@@ -561,6 +565,7 @@ devtools::install_github(&quot;JoeyBernhardt/singer&quot;)</code></pre>
 ##  9 High as Monk… The Boo Radle… Liverpool, E… Kingsize                 1998
 ## 10 Butterfly Mc… The Boo Radle… Liverpool, E… Giant Steps              1993
 ## # … with 13 more rows</code></pre>
+<p>both of these functions do the same thing!!!!!!!!!</p>
 </div>
 <div id="exercise-2-lotr" class="section level2">
 <h2>Exercise 2: LOTR</h2>
@@ -605,14 +610,28 @@ devtools::install_github(&quot;JoeyBernhardt/singer&quot;)</code></pre>
 ## 7 The Return Of The King     Elf       183   510
 ## 8 The Return Of The King     Hobbit      2  2673
 ## 9 The Return Of The King     Man       268  2459</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>Which races are present in “The Fellowship of the Ring” (<code>fell</code>), but not in any of the other ones?</li>
-</ol>
+<p>what if we use the native <code>rbind</code> function</p>
+<pre class="r"><code>rbind(fell, rbind(ttow, retk))</code></pre>
+<pre><code>## # A tibble: 9 x 4
+##   Film                       Race   Female  Male
+##   &lt;chr&gt;                      &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1 The Fellowship Of The Ring Elf      1229   971
+## 2 The Fellowship Of The Ring Hobbit     14  3644
+## 3 The Fellowship Of The Ring Man         0  1995
+## 4 The Two Towers             Elf       331   513
+## 5 The Two Towers             Hobbit      0  2463
+## 6 The Two Towers             Man       401  3589
+## 7 The Return Of The King     Elf       183   510
+## 8 The Return Of The King     Hobbit      2  2673
+## 9 The Return Of The King     Man       268  2459</code></pre>
+<p>Oh it’s the same thing, but we have to nest rbind like we’re birds or something idk</p>
+<p>. Which races are present in “The Fellowship of the Ring” (<code>fell</code>), but not in any of the other ones?</p>
 <pre class="r"><code>fell %&gt;% 
   anti_join(ttow, by = &quot;Race&quot;) %&gt;% 
   anti_join(retk, by = &quot;Race&quot;)</code></pre>
 <pre><code>## # A tibble: 0 x 4
 ## # … with 4 variables: Film &lt;chr&gt;, Race &lt;chr&gt;, Female &lt;dbl&gt;, Male &lt;dbl&gt;</code></pre>
+<p>All the races in fell are in the other ones!</p>
 </div>
 <div id="exercise-3-set-operations" class="section level2">
 <h2>Exercise 3: Set Operations</h2>

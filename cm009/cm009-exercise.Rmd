@@ -80,9 +80,10 @@ guest_long %>%
 
 ```{r}
 guest_long %>% 
-  group_by(party) %>% 
+  group_by(party, event) %>% 
   summarize(all_pending = all(attendance == "PENDING"))
 ```
+For example, parties 3 has at least one member pending for brunch.
 
 4. Which parties still have a "PENDING" status for all members for the wedding?
 
@@ -91,6 +92,7 @@ guest %>%
   group_by(party) %>% 
   summarize(pending_wedding = all(attendance_wedding == "PENDING"))
 ```
+It seems that parties 3, 4, 8 and 10 have a PENDING status for one of their members for at least one event.
 
 
 5. Put the data back to the way it was.
@@ -135,8 +137,8 @@ mu <- c(-5, 0, 5)
 sd <- c(1, 3, 10)
 tibble(mu = mu, sd = sd) %>% 
   group_by_all() %>% 
-  mutate(z = list(rnorm(n, mu, sd))) %>% 
-  unnest(z)
+  mutate(z_scores = list(rnorm(n, mu, sd))) %>% 
+  unnest(z_scores)
 ```
 
 3. Fix the `experiment` tibble below (originally defined in the documentation of the `tidyr::expand()` function) so that all three repeats are displayed for each person, and the measurements are kept. The code is given, but needs one adjustment. What is it?

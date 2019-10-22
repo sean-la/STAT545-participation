@@ -8,7 +8,7 @@ output:
 
 
 ```
-## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
 ```
 
 ```
@@ -19,7 +19,7 @@ output:
 ```
 
 ```
-## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
@@ -53,7 +53,8 @@ gapminder %>%
   ggplot() + geom_boxplot(aes(x = life_level, y = gdpPercap)) +
   labs(y = "GDP per capita, $", x= "Life expectancy level, years") +
   scale_x_discrete(drop=FALSE) +
-  theme_bw() 
+  theme_bw() +
+  ggtitle("life expectancy vs gpd per capita")
 ```
 
 ![](cm012-exercise_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
@@ -82,7 +83,8 @@ gapminder %>%
   ggplot() + geom_boxplot(aes(x = life_level, y = gdpPercap)) +
   labs(y = "GDP per capita, $", x= "Life expectancy level, years") +
   scale_x_discrete(drop=FALSE) +
-  theme_bw() 
+  theme_bw() +
+  ggtitle("corrected factors life expectancy vs gpd per capita")
 ```
 
 ![](cm012-exercise_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
@@ -168,6 +170,8 @@ gap$country %>%
 ```
 ## [1] 142
 ```
+there are 142 levels in `country`
+there are 142 levels in the filtered gapminder dataset
 
 ## Dropping unused levels
 
@@ -187,6 +191,7 @@ h_gap_dropped$country %>%
 ```
 ## [1] 5
 ```
+omg running `droplevels()` removes all of the unused levels!!!!! wowzas
 
 ## Changing the order of levels
 
@@ -211,6 +216,8 @@ gapminder %>%
 ## 5 Oceania      24
 ```
 
+But anyway, back to the point: that's a frequency table.
+
 The table is nice, but it would be better to visualize the data.
 Factors are most useful/helpful when plotting data.
 So let's first plot this:
@@ -226,6 +233,8 @@ gapminder %>%
 ```
 
 ![](cm012-exercise_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+
+that's a fine looking table
 
 Think about how levels are normally ordered. 
 It turns out that by default, R always sorts levels in alphabetical order. 
@@ -249,6 +258,7 @@ gapminder %>%
 ```
 
 ![](cm012-exercise_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+oh boy those factors are reversed
 
 Section 9.6 of Jenny Bryan's [notes](https://stat545.com/factors-boss.html#reorder-factors) has some helpful examples.
 
@@ -275,13 +285,13 @@ Use `fct_reorder2()` when you have a line chart of a quantitative x against anot
 ```r
 ## order by life expectancy 
 ggplot(h_gap, aes(x = year, y = lifeExp,
-                  color = FILL_IN_THIS)) +
+                  color = lifeExp)) +
   geom_line() +
   labs(color = "country")
 ```
 
 ```
-## Error in ggplot(h_gap, aes(x = year, y = lifeExp, color = FILL_IN_THIS)): object 'h_gap' not found
+## Error in ggplot(h_gap, aes(x = year, y = lifeExp, color = lifeExp)): object 'h_gap' not found
 ```
 
 ## Change order of the levels manually

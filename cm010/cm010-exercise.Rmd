@@ -54,6 +54,7 @@ time %>%
 time %>% 
   inner_join(album, by = c("song", "artist_name"))
 ```
+Some examples of songs where we know its corresponding album include grievance, stupidmop (funny name), present tense, and sparrow.
 
 2. Go ahead and add the corresponding albums to the `time` tibble, being sure to preserve rows even if album info is not readily available.
 
@@ -61,6 +62,7 @@ time %>%
 time %>% 
   left_join(album, by = c("song","artist_name"))
 ```
+corduroy doesnt have album info!!!!!!!
 
 3. Which songs do we have "year", but not album info?
 
@@ -68,6 +70,8 @@ time %>%
 time %>% 
   anti_join(album, by = "song")
 ```
+leaves and sand doesn't have album info either :(
+
 
 4. Which artists are in `time`, but not in `album`?
 
@@ -75,7 +79,8 @@ time %>%
 time %>% 
   anti_join(album, by = "artist_name")
 ```
-
+These ones don't have time info either.
+Semi join is a magnificent function
 
 5. You've come across these two tibbles, and just wish all the info was available in one tibble. What would you do?
 
@@ -86,7 +91,7 @@ time %>%
 album %>% 
   full_join(time, by = c('song','artist_name'))
 ```
-
+both of these functions do the same thing!!!!!!!!!
 
 ## Exercise 2: LOTR
 
@@ -103,8 +108,13 @@ retk <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/dat
 ```{r}
 bind_rows(fell, ttow, retk)
 ```
+what if we use the native `rbind` function
+```{r}
+rbind(fell, rbind(ttow, retk))
+```
+Oh it's the same thing, but we have to nest rbind like we're birds or something idk
 
-2. Which races are present in "The Fellowship of the Ring" (`fell`), but not in any of the other ones?
+. Which races are present in "The Fellowship of the Ring" (`fell`), but not in any of the other ones?
 
 ```{r}
 fell %>% 
@@ -112,7 +122,7 @@ fell %>%
   anti_join(retk, by = "Race")
 ```
 
-
+All the races in fell are in the other ones!
 
 ## Exercise 3: Set Operations
 

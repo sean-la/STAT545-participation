@@ -129,6 +129,7 @@ time %>%
 ## 12 I've Got A Crush On You  Carly Simon    1994 New York,… Clouds In My Co…
 ## 13 "Manha De Carnaval (The… Carly Simon    2007 New York,… Into White
 ```
+Some examples of songs where we know its corresponding album include grievance, stupidmop (funny name), present tense, and sparrow.
 
 2. Go ahead and add the corresponding albums to the `time` tibble, being sure to preserve rows even if album info is not readily available.
 
@@ -154,6 +155,7 @@ time %>%
 ## 10 Leaves And Sand     The Boo Radle…  1993 <NA>        <NA>               
 ## # … with 12 more rows
 ```
+corduroy doesnt have album info!!!!!!!
 
 3. Which songs do we have "year", but not album info?
 
@@ -177,6 +179,8 @@ time %>%
 ## 8 Don't Forget About Us            Mariah Carey     2005
 ## 9 Vision Of Love                   Mariah Carey     1990
 ```
+leaves and sand doesn't have album info either :(
+
 
 4. Which artists are in `time`, but not in `album`?
 
@@ -196,7 +200,8 @@ time %>%
 ## 4 Don't Forget About Us Mariah Carey  2005
 ## 5 Vision Of Love        Mariah Carey  1990
 ```
-
+These ones don't have time info either.
+Semi join is a magnificent function
 
 5. You've come across these two tibbles, and just wish all the info was available in one tibble. What would you do?
 
@@ -244,7 +249,7 @@ album %>%
 ## 10 Butterfly Mc… The Boo Radle… Liverpool, E… Giant Steps              1993
 ## # … with 13 more rows
 ```
-
+both of these functions do the same thing!!!!!!!!!
 
 ## Exercise 2: LOTR
 
@@ -314,8 +319,29 @@ bind_rows(fell, ttow, retk)
 ## 8 The Return Of The King     Hobbit      2  2673
 ## 9 The Return Of The King     Man       268  2459
 ```
+what if we use the native `rbind` function
 
-2. Which races are present in "The Fellowship of the Ring" (`fell`), but not in any of the other ones?
+```r
+rbind(fell, rbind(ttow, retk))
+```
+
+```
+## # A tibble: 9 x 4
+##   Film                       Race   Female  Male
+##   <chr>                      <chr>   <dbl> <dbl>
+## 1 The Fellowship Of The Ring Elf      1229   971
+## 2 The Fellowship Of The Ring Hobbit     14  3644
+## 3 The Fellowship Of The Ring Man         0  1995
+## 4 The Two Towers             Elf       331   513
+## 5 The Two Towers             Hobbit      0  2463
+## 6 The Two Towers             Man       401  3589
+## 7 The Return Of The King     Elf       183   510
+## 8 The Return Of The King     Hobbit      2  2673
+## 9 The Return Of The King     Man       268  2459
+```
+Oh it's the same thing, but we have to nest rbind like we're birds or something idk
+
+. Which races are present in "The Fellowship of the Ring" (`fell`), but not in any of the other ones?
 
 
 ```r
@@ -329,7 +355,7 @@ fell %>%
 ## # … with 4 variables: Film <chr>, Race <chr>, Female <dbl>, Male <dbl>
 ```
 
-
+All the races in fell are in the other ones!
 
 ## Exercise 3: Set Operations
 
